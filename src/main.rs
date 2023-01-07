@@ -10,6 +10,8 @@ const SCREEN_WIDTH: i32 = 80;
 const SCREEN_HEIGHT: i32 = 50;
 const FRAME_DURATION: f32 = 75.0;
 const SCORE_INC: i32 = 100;
+const PLAYER_CHAR: char = '☻';
+const OBSTACLE_CHAR: char = '█';
 
 struct State {
     player: Player,
@@ -130,11 +132,11 @@ impl Player {
 
     fn render(&self, ctx: &mut BTerm) {
         ctx.set(
-            0,
+            1,
             self.y,
             YELLOW,
             BLACK,
-            to_cp437('@'),
+            to_cp437(PLAYER_CHAR),
         );
     }
 
@@ -187,7 +189,7 @@ impl Obstacle {
                 y,
                 RED,
                 BLACK,
-                to_cp437('/'),
+                to_cp437(OBSTACLE_CHAR),
             )
         }
 
@@ -198,7 +200,7 @@ impl Obstacle {
                 y,
                 RED,
                 BLACK,
-                to_cp437('/')
+                to_cp437(OBSTACLE_CHAR)
             )
         }
     }
